@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Position> listOfOrder = new ArrayList();
+        ArrayList<Position> listOfOrders = new ArrayList();
         Calculator calculator = new Calculator();
         RubleFormatter formatter = new RubleFormatter();
 
@@ -25,22 +25,22 @@ public class Main {
                         String positionName = scanner.next();
                         if (positionName.equalsIgnoreCase("Завершить")) {
                             double totalCost = 0.0;
-                            String totalName = "";
+                            ArrayList<String> totalName = new ArrayList<>();
 
-                            for (Position position : listOfOrder) {
+                            for (Position position : listOfOrders) {
                                 totalCost += position.cost;
-                                totalName += position.name + " \n";
+                                totalName.add(position.name);
                             }
 
                             double payment = totalCost / guestCount;
 
                             System.out.println("Общая сумма в заказе: " + totalCost);
-                            System.out.println("Добавленные товары: \n" + totalName);
+                            System.out.println("Добавленные товары: \n" + String.join(System.lineSeparator(), totalName));
                             System.out.println("Каждый человек должен заплатить по " + formatter.formatterPayment(payment) + " " + formatter.rubleFormatter(payment));
                             break;
                         }
 
-                        calculator.addCostToTheOrder(listOfOrder, positionName);
+                        calculator.addCostToTheOrder(scanner, listOfOrders, positionName);
                     }
                     break;
                 }

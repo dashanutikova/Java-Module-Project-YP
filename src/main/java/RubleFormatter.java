@@ -12,15 +12,10 @@ public class RubleFormatter {
             return "рублей";
         }
 
-        switch (lastNumber) {
-            case 1:
-                return "рубль";
-            case 2:
-            case 3:
-            case 4:
-                return "рубля";
-            default:
-                return "рублей";
-        }
+        return switch (lastNumber) {
+            case 1 -> "рубль";
+            case 2, 3, 4 -> "рубля";
+            default -> "рублей";
+        };
     }
 }

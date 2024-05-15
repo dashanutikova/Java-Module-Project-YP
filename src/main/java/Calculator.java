@@ -3,9 +3,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
-    Scanner scanner = new Scanner(System.in);
 
-    public void addCostToTheOrder(ArrayList<Position> listOfOrder, String positionName) {
+    public void addCostToTheOrder(Scanner scanner,ArrayList<Position> listOfOrder, String positionName) {
         System.out.println("Укажите стоимость товара");
 
         while (true) {
